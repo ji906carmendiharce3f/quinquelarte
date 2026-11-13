@@ -10,14 +10,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    <title>PIGMENTAR - Jardín Nº 906 - Carmen Diharce - 3F</title>
+    <title>QUINQUELARTE - Jardín Nº 906 - Carmen Diharce - 3F</title>
 
     <style>
         body {
-            background-image: url(./fondo1\ \(1\).jpg);
+            background-image: url(./fondo.jpg);
             background-size: cover;
             font-family: "Rubik", sans-serif;
-             overflow: hidden; 
+            overflow: hidden;
         }
 
         #introScreen {
@@ -26,7 +26,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-image: url('./fondo1 (1).jpg');
+            background-image: url('./fondo.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -50,8 +50,8 @@
             display: block;
             margin: 0 auto;
             touch-action: none;
-              justify-content: center;
-    align-items: center;
+            justify-content: center;
+            align-items: center;
         }
 
 
@@ -69,7 +69,7 @@
         }
 
         #colorPreview {
-         
+
             width: 100px;
             height: 100px;
             border: 2px solid #000;
@@ -98,15 +98,15 @@
             flex-wrap: wrap;
         }
 
-    .row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 1px 0;
-    text-align: center;
-    width: 100%;
-}
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 1px 0;
+            text-align: center;
+            width: 100%;
+        }
 
 
         @media (max-width: 600px) {
@@ -140,11 +140,11 @@
 
 <body>
     <div id="introScreen">
-        <img src="./logo.png" alt="Logo" style="width: 50%; max-width: 400px; margin-top: 40px;">
+        <img src="./logo.png" alt="Logo" style="width: 60%; max-width: 400px; margin-top: 40px;">
         <p style="font-size: 18px; margin: 20px; color: brown; background-color: white;">
-            Elegí un residuo o verdura para pintar con el pigmento que se le puede extraer.<br> Podés agregarle agua
+            Creá tu obra inspirada en Quinquela Martín.<br> Podés agregarle agua
             para aclarar
-            el pigmento.<br>
+            el color.<br>
             Luego apretá "AGREGAR" para unir tu producción al Mural Virtual.<br>
             Dejá volar tu creatividad y pintá.<br>
         </p>
@@ -184,7 +184,7 @@
                 style="padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;">
 
         </div>
-        <button id="addButton" style="margin: 5%;" >AGREGAR</button>
+        <button id="addButton" style="margin: 5%;">AGREGAR</button>
     </div>
 
     <script>
@@ -197,11 +197,24 @@
         let aguaLevel = 0;
         let painting = false;
 
+        // 1. Cargamos la imagen de fondo del lienzo (reemplazá './barco.png' por tu archivo)
+        const bgImage = new Image();
+        bgImage.src = "./barco.png";
+
+        bgImage.onload = () => {
+            if (canvas.width > 0 && canvas.height > 0) {
+                ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+            }
+        };
+
         function resizeCanvas() {
             canvas.width = 400;
             canvas.height = 400;
+            // Dibujamos la imagen de fondo apenas se inicia el canvas
+            if (bgImage.complete) {
+                ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+            }
         }
-
 
         document.getElementById("startButton").addEventListener("click", () => {
             document.getElementById("introScreen").style.display = "none";
@@ -297,7 +310,7 @@
             e.preventDefault();
 
             const pos = getEventPos(e);
-            ctx.lineWidth = 5;
+            ctx.lineWidth = 5; // Ancho del pincel 
             ctx.lineCap = "round";
             ctx.strokeStyle = getLightenedColor();
 
