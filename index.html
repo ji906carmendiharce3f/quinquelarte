@@ -88,6 +88,7 @@
             color: white;
             border: none;
             cursor: pointer;
+            font-size: 20px;
         }
 
         .color-row {
@@ -141,12 +142,11 @@
 <body>
     <div id="introScreen">
         <img src="./logo.png" alt="Logo" style="width: 80%; max-width: 600px; margin-top: 40px;">
-        <p style="font-size: 18px; margin: 20px; color: black; ">
-            Creá tu obra inspirada en Benito Quinquela Martín.<br> Podés agregarle agua
-            para aclarar
-            el color.<br>
-            Luego apretá "AGREGAR" para unir tu producción al Mural Virtual.<br>
-            Dejá volar tu creatividad y pintá.<br>
+        <p style="font-size: 16px; margin: 20px; color: black; background-color: white;">
+            CREÁ TU OBRA INSPIRADA EN BENITO QUINQUELA MARTÍN.<br> PODÉS AGREGARLE AGUA A LOS COLORES PARA ACLARARLOS.
+            <br> 
+            LUEGO APRETÁ "AGREGAR" PARA UNIR TU PRODUCCIÓN AL MURAL VIRTUAL.<br> 
+            DEJÁ VOLAR TU CREATIVIDAD Y PINTÁ.<br>
         </p>
         <button id="startButton">INICIAR</button>
     </div>
@@ -154,16 +154,16 @@
     <div id="mainApp" style="display: none;">
         <div class="color-row">
             <div class="row">
-                <img id="color1" class="color-picker" src="./2.png" alt="Marrón" />
-                <img id="color2" class="color-picker" src="./1.png" alt="Verde" />
-                <img id="color3" class="color-picker" src="./3.png" alt="Naranja" />
+                <img id="color1" class="color-picker" src="./8.jpg" alt="Marrón" />
+                <img id="color2" class="color-picker" src="./4.jpg" alt="Verde" />
+                <img id="color3" class="color-picker" src="./5.jpg" alt="Naranja" />
                 <img id="agua" class="color-picker" src="./agua.png" alt="Agua" />
             </div>
 
             <div class="row">
-                <img id="color4" class="color-picker" src="./repollo.jpg" alt="Fucsia" />
-                <img id="color5" class="color-picker" src="./remolacha.jpg" alt="Violeta oscuro" />
-                <img id="color6" class="color-picker" src="./cebolla.jpg" alt="Naranja apagado" />
+                <img id="color4" class="color-picker" src="./7.jpg" alt="" />
+                <img id="color5" class="color-picker" src="./6.jpg" alt="" />
+                <img id="color6" class="color-picker" src="./9.jpg" alt="" />
                 <div id="colorPreview"></div>
 
             </div>
@@ -180,7 +180,7 @@
 
 
         <div>
-            <input type="text" id="artistName" placeholder="Tu nombre"
+            <input type="text" id="artistName" placeholder="NOMBRE"
                 style="padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;">
 
         </div>
@@ -210,7 +210,7 @@
         function resizeCanvas() {
             canvas.width = 400;
             canvas.height = 400;
-            // Dibujamos la imagen de fondo apenas se inicia el canvas
+            
             if (bgImage.complete) {
                 ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
             }
@@ -267,12 +267,12 @@
             colorPreview.style.backgroundColor = getLightenedColor();
         }
 
-        document.getElementById("color1").addEventListener("click", () => changeColor("brown"));
-        document.getElementById("color2").addEventListener("click", () => changeColor("green"));
+        document.getElementById("color1").addEventListener("click", () => changeColor("#431a0c"));
+        document.getElementById("color2").addEventListener("click", () => changeColor("#91a505"));
         document.getElementById("color3").addEventListener("click", () => changeColor("orange"));
         document.getElementById("color4").addEventListener("click", () => changeColor("blue"));
-        document.getElementById("color5").addEventListener("click", () => changeColor("indigo"));
-        document.getElementById("color6").addEventListener("click", () => changeColor("#cc6600")); // naranja apagado
+        document.getElementById("color5").addEventListener("click", () => changeColor("#05aaff"));
+        document.getElementById("color6").addEventListener("click", () => changeColor("#fff500")); // naranja apagado
         document.getElementById("agua").addEventListener("click", () => {
             aguaLevel++;
             updatePreview();
